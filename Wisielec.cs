@@ -1,4 +1,4 @@
-//Etap 1 stworzenie tablicy słów allWords
+//Etap 1 stworzenie tablicy słów allWords.
 
 using System;
 using System.Collections.Generic;
