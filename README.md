@@ -1,4 +1,4 @@
-# wisielec
+# Szubienica
 
 Prosta gra Wisielec
 
