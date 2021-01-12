@@ -1,5 +1,3 @@
-//Etap 1 stworzenie tablicy słów allWords
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -114,4 +112,57 @@ namespace cwiczenia
                             userWord[i] = c; // ...zastąp kreskę wprowadzoną literą
                             charFound = true; // Litera znajduje się w wylosowanym słowie, więc ustaw charFound na true
                         }
-                        
+                    }
+                    bool errCharFound = false; // zmienna przechowująća dane na temat błędnej litery
+                    if (!charFound) // jeżeli nie znaleziono litery w wylosowanym słowie...
+                    {
+                        err += 1; // ...zwiększ ilość bieżących błędów o 1
+                        for (int i = 0; i < errChars.Length; i++) //Pętla sprawdzająca czy podana litera znajduje się aktualnie w tablicy błędnych liter errChars[]
+                        {
+                            if (errChars[i] == c)
+                            {
+                                errCharFound = true; // jeżeli tak, wyjdź z pętli
+                                break;
+                            }
+                        }
+                        if (!errCharFound) // jeżeli nie...
+                        {
+                            for (int i = 0; i < errChars.Length; i++)
+                            {
+                                if (errChars[i] == 0) // ...sprawdź czy komórka o indeksie i jest pusta i...
+                                {
+                                    errChars[i] = c; // ... jeżeli tak jest dodaj do niej błędną literę
+                                    break;
+                                }
+                                    
+                            }
+                        }
+                    }
+                    for (int i = 0; i < wordLen; i++) // pętla sprawdzająca czy gracz odgadł słowo
+                    {
+                        if (userWord[i] == '-')
+                        {
+                            win = false;
+                            break;
+                        }
+                        win = true;
+                    }
+                    if (err == errCount) // jeżeli gracz popełnił maksymalną liczbę błędów przegrywa
+                    {
+                        Console.WriteLine("Powiesiłeś się za słowo: {0}!\n", word);
+                        Console.ReadLine();
+                        game = false;
+                    }
+                    if (win) // jeżeli gracz odgadł słowo wygrywa
+                    {
+                        Console.WriteLine("\nZgadłeś słowo {0}!", word);
+                        Console.ReadLine();
+                        game = false;
+                    }
+                    
+                }
+
+            }
+        }
+    }
+}
